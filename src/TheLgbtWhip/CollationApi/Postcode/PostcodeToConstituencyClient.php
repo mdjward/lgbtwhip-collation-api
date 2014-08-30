@@ -26,12 +26,6 @@ class PostcodeToConstituencyClient extends AbstractClient
 {
     
     /**
-     *
-     * @var type 
-     */
-    protected $baseUrl;
-    
-    /**
      * 
      * @param Client $client
      * @param PostcodeResponseProcessor $processor
@@ -42,9 +36,7 @@ class PostcodeToConstituencyClient extends AbstractClient
         PostcodeResponseProcessor $processor,
         $baseUrl
     ) {
-        parent::__construct($client, $processor);
-        
-        $this->baseUrl = $baseUrl;
+        parent::__construct($client, $processor, $baseUrl);
     }
     
     public function getConstituencyForPostcode($postcode)

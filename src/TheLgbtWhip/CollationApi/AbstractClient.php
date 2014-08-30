@@ -35,14 +35,21 @@ abstract class AbstractClient
     protected $processor;
     
     /**
+     *
+     * @var type 
+     */
+    protected $baseUrl;
+    
+    /**
      * 
      * @param Client $client
      * @param ProcessorInterface $processor
      */
-    public function __construct(Client $client, ProcessorInterface $processor)
+    public function __construct(Client $client, ProcessorInterface $processor, $baseUrl)
     {
         $this->client = $client;
         $this->processor = $processor;
+        $this->baseUrl = $baseUrl;
     }
     
 }
