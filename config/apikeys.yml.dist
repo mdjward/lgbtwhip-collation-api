@@ -1,3 +1,4 @@
-apikeys:
-    theyworkforyou: API-KEY-GOES-HERE
-
+candidate:
+    client:
+        identifier: theyworkforyou
+        apikey: API-KEY-GOES-HERE

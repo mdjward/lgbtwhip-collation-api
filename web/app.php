@@ -14,15 +14,25 @@ use Slim\Slim;
 
 
 
-$app = new Slim();
+// Initialise app and inject common services
+$app = new Slim([
+    
+]);
 
+// Set default content-type header (this is an application constant)
+$app->response->headers->set("Content-Type", "text/json");
+
+// Postcode route
 $app->get(
     "/postcode/:postcode",
     function($postcode) use ($app, $postcodeClient) {
-        echo json_encode($postcodeClient->getConstituencyForPostcode($postcode));
-        
-        $app->response->headers->set("Content-Type", "text/json");
+        if (($constituency = $postcodeClient->getConstituencyForPostcode($postcode)) !== null) {
+            return print json_encode($constituency);
+        }
+    
+        $app->response->setStatus(404);
     }
 );
 
 $app->run();
+

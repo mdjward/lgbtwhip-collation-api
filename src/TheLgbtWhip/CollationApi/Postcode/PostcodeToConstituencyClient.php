@@ -56,7 +56,6 @@ class PostcodeToConstituencyClient extends AbstractClient
 
         try {
             $response = $request->send();
-            $responseBody = $response->getBody(true);
             
             return $this->processor->processRawData(
                 json_decode($response->getBody(true), true)

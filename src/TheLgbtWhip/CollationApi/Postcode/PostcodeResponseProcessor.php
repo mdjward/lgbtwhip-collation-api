@@ -10,6 +10,7 @@
  */
 namespace TheLgbtWhip\CollationApi\Postcode;
 
+use TheLgbtWhip\CollationApi\Constituency\ConstituencyFactory;
 use TheLgbtWhip\CollationApi\ProcessorInterface;
 
 
@@ -44,6 +45,12 @@ class PostcodeResponseProcessor implements ProcessorInterface
     
     /**
      *
+     * @var ConstituencyFactory
+     */
+    protected $constituencyFactory;
+    
+    /**
+     *
      * @var string
      */
     protected $targetTypeName;
@@ -52,10 +59,14 @@ class PostcodeResponseProcessor implements ProcessorInterface
     
     /**
      * 
+     * @param ConstituencyFactory $constituencyFactory
      * @param string $targetTypeName
      */
-    public function __construct($targetTypeName)
-    {
+    public function __construct(
+        ConstituencyFactory $constituencyFactory,
+        $targetTypeName
+    ) {
+        $this->constituencyFactory = $constituencyFactory;
         $this->targetTypeName = $targetTypeName;
     }
     
@@ -66,6 +77,7 @@ class PostcodeResponseProcessor implements ProcessorInterface
      */
     public function processRawData(array $rawData)
     {
+        // The lack of the areas means we have no data
         if (!isset($rawData[self::AREAS_KEY])) {
             return null;
         }
@@ -79,7 +91,7 @@ class PostcodeResponseProcessor implements ProcessorInterface
             )
             || ($targetData = $this->findArea($rawData[self::AREAS_KEY])) !==  null
         ) {
-            return (object) $targetData;
+            return $this->constituencyFactory->build($targetData);
         }
         
         return null;

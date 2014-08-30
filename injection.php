@@ -9,31 +9,24 @@
  * @copyright (c) 2014, Byng Systems Ltd
  */
 
-require_once __DIR__ . "/vendor/autoload.php";
+$configuration = require_once(__DIR__ . "/configuration.php");
 
 use Guzzle\Http\Client;
-use Symfony\Component\Yaml\Parser;
+use TheLgbtWhip\CollationApi\Constituency\ConstituencyFactory;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeResponseProcessor;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeToConstituencyClient;
-
-
-
-$yamlParser = new Parser();
-$configuration = $yamlParser->parse(
-    file_get_contents(__DIR__ . "/config/config.yml")
-);
-
-$apiKeys = $yamlParser->parse(
-    file_get_contents(__DIR__ . "/config/apikeys.yml")
-);
 
 
 
 // Initialise common client
 $client = new Client();
 
+// Initialise constituency processing artifacts
+$constituencyFactory = new ConstituencyFactory();
+
 // Initialise postcode to constituency processing artifacts
 $postcodeProcessor = new PostcodeResponseProcessor(
+    $constituencyFactory,
     $configuration["postcode"]["processor"]["target_type_name"]
 );
 $postcodeClient = new PostcodeToConstituencyClient(
