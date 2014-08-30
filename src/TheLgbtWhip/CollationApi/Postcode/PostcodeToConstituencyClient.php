@@ -8,7 +8,7 @@
  * @author M.D.Ward <matthew.ward@byng-systems.com>
  * @copyright (c) 2014, Byng Systems Ltd
  */
-namespace TheLgbtWhip\CollationApi\Processor;
+namespace TheLgbtWhip\CollationApi\Postcode;
 
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
@@ -50,13 +50,16 @@ class PostcodeToConstituencyClient extends AbstractClient
     public function getConstituencyForPostcode($postcode)
     {
         $url = Url::factory($this->baseUrl);
-        $url->setFragment($url->getFragment() . '/' . $postcode);
+        $url->setPath($url->getPath() . '/' . $postcode);
         
         $request = $this->client->get((string) $url);
 
         try {
+            $response = $request->send();
+            $responseBody = $response->getBody(true);
+            
             return $this->processor->processRawData(
-                json_decode($request->send(), true)
+                json_decode($response->getBody(true), true)
             );
         } catch (ClientErrorResponseException $ex) {
             throw $ex;

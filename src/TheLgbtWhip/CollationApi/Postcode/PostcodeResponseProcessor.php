@@ -8,7 +8,7 @@
  * @author M.D.Ward <matthew.ward@byng-systems.com>
  * @copyright (c) 2014, Byng Systems Ltd
  */
-namespace TheLgbtWhip\CollationApi\Processor;
+namespace TheLgbtWhip\CollationApi\Postcode;
 
 use TheLgbtWhip\CollationApi\ProcessorInterface;
 
