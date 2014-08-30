@@ -62,5 +62,13 @@ $app->get(
     }
 );
 
+
+$app->get(
+    "/server-dump",
+    function() {
+        return print json_encode($_SERVER);
+    }
+);
+
 $app->run();
 
