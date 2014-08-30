@@ -1,0 +1,20 @@
+{
+    "name": "mdjward/lgbtwhip-collation-api",
+    "authors": [
+        {
+            "name": "Matthew David Ward",
+            "email": "dev@mattdw.co.uk",
+            "role": "API developer"
+        }
+    ],
+    "require": {
+        "slim/slim": "2.*",
+        "guzzle/guzzle": "3.9.*",
+        "symfony/yaml": "2.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "TheLgbtWhip\\CollationApi\\": "src/TheLgbtWhip/CollationApi/"
+        }
+    }
+}
