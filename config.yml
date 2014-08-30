@@ -1,0 +1,5 @@
+postcode:
+    processor:
+        target_type_name: UK Parliament constituency
+    client:
+        base_url: http://mapit.mysociety.org/postcode
