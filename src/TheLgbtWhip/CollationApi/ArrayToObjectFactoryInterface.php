@@ -5,7 +5,7 @@
  * 
  * Created 30-Aug-2014 19:39:50
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  * 
  */
 namespace TheLgbtWhip\CollationApi;
@@ -15,7 +15,7 @@ namespace TheLgbtWhip\CollationApi;
 /**
  * ArrayToObjectFactoryInterface
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 interface ArrayToObjectFactoryInterface
 {

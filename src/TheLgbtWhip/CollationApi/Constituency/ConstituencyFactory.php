@@ -5,7 +5,7 @@
  * 
  * Created 30-Aug-2014 19:39:03
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  * 
  */
 namespace TheLgbtWhip\CollationApi\Constituency;
@@ -17,7 +17,7 @@ use TheLgbtWhip\CollationApi\ArrayToObjectFactoryInterface;
 /**
  * ConstituencyFactory
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 class ConstituencyFactory implements ArrayToObjectFactoryInterface
 {

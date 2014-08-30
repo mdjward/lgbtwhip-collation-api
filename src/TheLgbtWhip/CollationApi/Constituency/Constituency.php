@@ -5,7 +5,7 @@
  * 
  * Created 30-Aug-2014 18:52:22
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  * 
  */
 namespace TheLgbtWhip\CollationApi\Constituency;
@@ -20,7 +20,7 @@ new JMS\Accessor;
 /**
  * Constituency
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 class Constituency
 {
