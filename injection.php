@@ -13,8 +13,10 @@ $configuration = require_once(__DIR__ . "/configuration.php");
 
 use Guzzle\Http\Client;
 use ICanBoogie\Inflector;
+use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\SerializerBuilder;
+use TheLgbtWhip\CollationApi\Candidate\MemberOfParliamentClient;
 use TheLgbtWhip\CollationApi\Candidate\MemberOfParliamentResponseProcessor;
 use TheLgbtWhip\CollationApi\Constituency\ConstituencyFactory;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeResponseProcessor;
@@ -31,6 +33,9 @@ $inflector = Inflector::get();
 // Build JSON serializer by initialising the builder (factory)
 $serializerBuilder = new SerializerBuilder();
 $serializerBuilder->setPropertyNamingStrategy(new IdenticalPropertyNamingStrategy());
+
+// Some strange hackyness required to get annotations working
+new Accessor();
 
 // Initialise the serializer
 $serializer = $serializerBuilder->build();
@@ -56,7 +61,7 @@ $postcodeClient = new PostcodeToConstituencyClient(
 // Initialise name/constituency to MP processing artifacts
 $mpProcessor = new MemberOfParliamentResponseProcessor($inflector);
 
-$mpClient = new TheLgbtWhip\CollationApi\Candidate\MemberOfParliamentClient(
+$mpClient = new MemberOfParliamentClient(
     $client,
     $mpProcessor,
     $configuration["candidate"]["client"]["base_url"],
