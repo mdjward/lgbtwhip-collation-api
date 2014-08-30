@@ -32,7 +32,9 @@ $app->get(
             if (($constituency = $postcodeClient->getConstituencyForPostcode($postcode)) !== null) {
                 return print $serializer->serialize($constituency, "json");
             }
-        } catch (Exception $ex) {}
+        } catch (Exception $ex) {
+            throw $ex;
+        }
     
         $app->response->setStatus(404);
         return print "{'message': 'Could not find constituency for that postcode'}";
@@ -55,7 +57,9 @@ $app->get(
             if (($mp = $mpClient->getMemberOfParliament($name, $constituency))) {
                 return print json_encode($mp);
             }
-        } catch (Exception $ex) {}
+        } catch (Exception $ex) {
+            throw $ex;
+        }
         
         $app->response->setStatus(404);
         return print "{'message': 'Could not match MP with that name and constituency'}";
