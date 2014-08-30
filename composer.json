@@ -9,6 +9,7 @@
     ],
     "require": {
         "ext-mongo": "*",
+        "ext-mbstring": "*",
         "slim/slim": "2.*",
         "guzzle/guzzle": "3.9.*",
         "doctrine/cache": "1.3.*",
