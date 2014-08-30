@@ -10,7 +10,8 @@
     "require": {
         "slim/slim": "2.*",
         "guzzle/guzzle": "3.9.*",
-        "symfony/yaml": "2.5.*"
+        "symfony/yaml": "2.5.*",
+        "jms/serializer": "0.16.*"
     },
     "autoload": {
         "psr-4": {
