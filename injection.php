@@ -18,9 +18,13 @@ use TheLgbtWhip\CollationApi\Postcode\PostcodeToConstituencyClient;
 
 
 
-$configurationParser = new Parser();
-$configuration = $configurationParser->parse(
-    file_get_contents(__DIR__ . "/config.yml")
+$yamlParser = new Parser();
+$configuration = $yamlParser->parse(
+    file_get_contents(__DIR__ . "/config/config.yml")
+);
+
+$apiKeys = $yamlParser->parse(
+    file_get_contents(__DIR__ . "/config/apikeys.yml")
 );
 
 
