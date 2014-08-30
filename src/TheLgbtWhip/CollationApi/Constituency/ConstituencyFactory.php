@@ -25,11 +25,6 @@ class ConstituencyFactory implements ArrayToObjectFactoryInterface
     /**
      * 
      */
-    const KEY_ID = "id";
-    
-    /**
-     * 
-     */
     const KEY_NAME = "name";
     
     /**
@@ -54,7 +49,6 @@ class ConstituencyFactory implements ArrayToObjectFactoryInterface
         $constituency = new Constituency();
         
         $constituency
-            ->setId($data[self::KEY_ID])
             ->setName($data[self::KEY_NAME])
             ->setType($data[self::KEY_TYPE])
             ->setTypeName($data[self::KEY_TYPE_NAME])

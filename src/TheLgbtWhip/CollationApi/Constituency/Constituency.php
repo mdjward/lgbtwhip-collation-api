@@ -13,8 +13,6 @@ namespace TheLgbtWhip\CollationApi\Constituency;
 use InvalidArgumentException;
 use JMS\Serializer\Annotation as JMS;
 
-new JMS\Accessor;
-
 
 
 /**
@@ -24,13 +22,6 @@ new JMS\Accessor;
  */
 class Constituency
 {
-    
-    /**
-     * 
-     * @var integer
-     * @JMS\Accessor(getter="getId", setter="setId")
-     */
-    protected $id;
     
     /**
      *
@@ -55,11 +46,6 @@ class Constituency
     
     
     
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function getName()
     {
         return $this->name;
@@ -73,17 +59,6 @@ class Constituency
     public function getTypeName()
     {
         return $this->typeName;
-    }
-
-    public function setId($id)
-    {
-        if (!is_numeric($id) || ($id = (int) $id) <= 0) {
-            throw new InvalidArgumentException("Invalid constituency ID; must be an integer value greater than 0");
-        }
-        
-        $this->id = $id;
-        
-        return $this;
     }
 
     public function setName($name)

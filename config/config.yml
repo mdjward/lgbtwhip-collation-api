@@ -6,3 +6,13 @@ postcode:
 candidate:
     processor:
     client:
+        apikey: Ewa4N5F3kg63DW9yNYAcGV36
+        base_url: http://www.theyworkforyou.com/api/getMP?output=js
+voting_records:
+    client:
+        base_url: www.publicwhip.org.uk/division.php
+    relevant_issues:
+        -
+            name: Marriage (Same Sex Couples)
+            votes:
+                - { date: 2013-02-05, number: 151}

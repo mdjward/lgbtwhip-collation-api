@@ -72,13 +72,13 @@ class PostcodeResponseProcessor implements ProcessorInterface
     
     /**
      * 
-     * @param array $rawData
+     * @param mixed $rawData
      * @return object|null
      */
-    public function processRawData(array $rawData)
+    public function processRawData($rawData)
     {
         // The lack of the areas means we have no data
-        if (!isset($rawData[self::AREAS_KEY])) {
+        if (!is_array($rawData) || !isset($rawData[self::AREAS_KEY])) {
             return null;
         }
         

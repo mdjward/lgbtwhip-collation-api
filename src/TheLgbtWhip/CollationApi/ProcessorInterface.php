@@ -22,9 +22,9 @@ interface ProcessorInterface
     
     /**
      * 
-     * @param array $rawData
+     * @param mixed $rawData
      * @return object
      */
-    public function processRawData(array $rawData);
+    public function processRawData($rawData);
     
 }

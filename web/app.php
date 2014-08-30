@@ -19,6 +19,8 @@ $app = new Slim([
     "serializer" => $serializer
 ]);
 
+        
+
 // Set default content-type header (this is an application constant)
 $app->response->headers->set("Content-Type", "text/json");
 
@@ -34,6 +36,29 @@ $app->get(
     
         $app->response->setStatus(404);
         return print "{'message': 'Could not find constituency for that postcode'}";
+    }
+);
+
+// MP route
+$app->get(
+    "/mp",
+    function() use ($app, $mpClient) {
+        $name = $app->request->get("name");
+        $constituency = $app->request->get("constituency");
+        
+        if ($name === null || $constituency === null) {
+            $app->response->setStatus(401);
+            return print "{'message': 'Both candidate name 'name' and constituency 'constituency' must be provided as GET parameters'}";
+        }
+        
+        try {
+            if (($mp = $mpClient->getMemberOfParliament($name, $constituency))) {
+                return print json_encode($mp);
+            }
+        } catch (Exception $ex) {}
+        
+        $app->response->setStatus(404);
+        return print "{'message': 'Could not match MP with that name and constituency'}";
     }
 );
 
