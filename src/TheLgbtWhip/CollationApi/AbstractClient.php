@@ -37,10 +37,12 @@ abstract class AbstractClient
     /**
      * 
      * @param Client $client
+     * @param ProcessorInterface $processor
      */
     public function __construct(Client $client, ProcessorInterface $processor)
     {
         $this->client = $client;
+        $this->processor = $processor;
     }
     
 }
