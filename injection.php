@@ -12,6 +12,8 @@
 $configuration = require_once(__DIR__ . "/configuration.php");
 
 use Guzzle\Http\Client;
+use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
+use JMS\Serializer\SerializerBuilder;
 use TheLgbtWhip\CollationApi\Constituency\ConstituencyFactory;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeResponseProcessor;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeToConstituencyClient;
@@ -20,6 +22,13 @@ use TheLgbtWhip\CollationApi\Postcode\PostcodeToConstituencyClient;
 
 // Initialise common client
 $client = new Client();
+
+// Build JSON serializer by initialising the builder (factory)
+$serializerBuilder = new SerializerBuilder();
+$serializerBuilder->setPropertyNamingStrategy(new IdenticalPropertyNamingStrategy());
+
+// Initialise the serializer
+$serializer = $serializerBuilder->build();
 
 // Initialise constituency processing artifacts
 $constituencyFactory = new ConstituencyFactory();

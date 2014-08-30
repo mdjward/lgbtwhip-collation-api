@@ -11,6 +11,9 @@
 namespace TheLgbtWhip\CollationApi\Constituency;
 
 use InvalidArgumentException;
+use JMS\Serializer\Annotation as JMS;
+
+new JMS\Accessor;
 
 
 
@@ -25,24 +28,28 @@ class Constituency
     /**
      * 
      * @var integer
+     * @JMS\Accessor(getter="getId", setter="setId")
      */
     protected $id;
     
     /**
      *
      * @var string
+     * @JMS\Accessor(getter="getName", setter="setName")
      */
     protected $name;
     
     /**
-     *
+     * 
      * @var string
+     * @JMS\Accessor(getter="getType", setter="setType")
      */
     protected $type;
     
     /**
      *
      * @var string
+     * @JMS\Accessor(getter="getTypeName", setter="setTypeName")
      */
     protected $typeName;
     
