@@ -6,7 +6,7 @@
  * Created 30-Aug-2014 18:52:22
  *
  * @author M.D.Ward <matthew.ward@byng-systems.com>
- * @copyright (c) 2014, Byng Systems Ltd
+ * 
  */
 namespace TheLgbtWhip\CollationApi\Constituency;
 

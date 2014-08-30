@@ -6,7 +6,7 @@
  * Created 30-Aug-2014 17:51:00
  *
  * @author M.D.Ward <dev@mattdw.co.uk>
- * @copyright (c) 2014, Byng Systems Ltd
+ * 
  */
 
 $configuration = require_once(__DIR__ . "/configuration.php");

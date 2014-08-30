@@ -6,7 +6,7 @@
  * Created 30-Aug-2014 17:22:30
  *
  * @author M.D.Ward <dev@mattdw.co.uk>
- * @copyright (c) 2014, Byng Systems Ltd
+ * 
  */
 namespace TheLgbtWhip\CollationApi;
 
