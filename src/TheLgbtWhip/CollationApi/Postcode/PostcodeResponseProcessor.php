@@ -5,7 +5,7 @@
  * 
  * Created 30-Aug-2014 17:19:03
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  * @copyright (c) 2014, Byng Systems Ltd
  */
 namespace TheLgbtWhip\CollationApi\Postcode;
@@ -17,7 +17,7 @@ use TheLgbtWhip\CollationApi\ProcessorInterface;
 /**
  * PostcodeResponseProcessor
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 class PostcodeResponseProcessor implements ProcessorInterface
 {

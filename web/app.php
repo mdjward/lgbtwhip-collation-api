@@ -4,7 +4,7 @@
  * 
  * Created 30-Aug-2014 17:17:11
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  * @copyright (c) 2014, Byng Systems Ltd
  */
 
