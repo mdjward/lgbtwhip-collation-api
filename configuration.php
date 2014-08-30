@@ -16,11 +16,14 @@ use Symfony\Component\Yaml\Parser;
 
 $yamlParser = new Parser();
 
-return array_merge(
-    $yamlParser->parse(
-        file_get_contents(__DIR__ . "/config/config.yml")
-    ),
-    $yamlParser->parse(
-        file_get_contents(__DIR__ . "/config/apikeys.yml")
-    )
-);
+$config = [];
+
+foreach (["config", "apikeys"] as $configFile) {
+    $filePath = sprintf("%s/config/%s.yml", __DIR__, $configFile);
+    
+    if (file_exists($filePath)) {
+        $config = array_merge($config, $yamlParser->parse(file_get_contents($filePath)));
+    }
+}
+
+return $config;
