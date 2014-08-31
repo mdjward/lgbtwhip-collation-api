@@ -22,7 +22,7 @@ $app = new Slim([
         
 
 // Set default content-type header (this is an application constant)
-$app->response->headers->set("Content-Type", "text/json");
+$app->response->headers->set("Content-Type", "application/json");
 
 // Postcode route
 $app->get(
