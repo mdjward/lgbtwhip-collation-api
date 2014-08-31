@@ -5,8 +5,8 @@
  * 
  * Created 31-Aug-2014 02:13:24
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
- * @copyright (c) 2014, Byng Systems Ltd
+ * @author M.D.Ward <dev@mattdw.co.uk>
+ * 
  */
 namespace TheLgbtWhip\CollationApi\Candidate;
 
@@ -18,7 +18,7 @@ use ArrayAccess;
  * MemberOfParliament
  * Todo: refactor into a more sensible form
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 class MemberOfParliament implements ArrayAccess
 {

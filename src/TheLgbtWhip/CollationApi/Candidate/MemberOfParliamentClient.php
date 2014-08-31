@@ -5,8 +5,8 @@
  * 
  * Created 30-Aug-2014 23:13:27
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
- * @copyright (c) 2014, Byng Systems Ltd
+ * @author M.D.Ward <dev@mattdw.co.uk>
+ * 
  */
 namespace TheLgbtWhip\CollationApi\Candidate;
 
@@ -20,7 +20,7 @@ use TheLgbtWhip\CollationApi\ProcessorInterface;
 /**
  * MemberOfParliamentClient
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 class MemberOfParliamentClient extends AbstractApiKeyClient
 {

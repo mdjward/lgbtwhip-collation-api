@@ -5,8 +5,8 @@
  * 
  * Created 30-Aug-2014 22:13:24
  *
- * @author M.D.Ward <matthew.ward@byng-systems.com>
- * @copyright (c) 2014, Byng Systems Ltd
+ * @author M.D.Ward <dev@mattdw.co.uk>
+ * 
  */
 namespace TheLgbtWhip\CollationApi\Candidate\Parser;
 
@@ -19,7 +19,7 @@ use DOMXPath;
 /**
  * ThePublicWhipParser
  * 
- * @author M.D.Ward <matthew.ward@byng-systems.com>
+ * @author M.D.Ward <dev@mattdw.co.uk>
  */
 class ThePublicWhipParser
 {
