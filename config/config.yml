@@ -18,6 +18,7 @@ voting_records:
                     name: Second Reading
                     date: "1998-06-22"
                     number: 311
+                    progressive: true
         -
             name: Repeal of section 28
             votes:
@@ -25,6 +26,7 @@ voting_records:
                     name: Third Reading
                     date: "2003-03-10"
                     number: 111
+                    progressive: true
         -
             name: Introduction of Civil Partnerships
             votes:
@@ -32,10 +34,12 @@ voting_records:
                     name: Second Reading
                     date: "2004-10-12"
                     number: 256
+                    progressive: true
                 -
                     name: Third Reading
                     date: "2004-11-09"
                     number: 315
+                    progressive: true
         -
             name: Equality Act (Sexual Orientation) Regulations
             votes:
@@ -43,13 +47,15 @@ voting_records:
                     name: Vote
                     date: "2007-03-19"
                     number: 79
+                    progressive: true
         -
             name: IVF treatment for lesbian couples
             votes:
                 -
                     name: Vote
-                    date: "2007-03-19"
-                    number: 79
+                    date: "2008-05-20"
+                    number: 197
+                    progressive: false
         -
             name: Marriage (Same Sex Couples)
             votes:
@@ -57,7 +63,9 @@ voting_records:
                     name: Second Reading
                     date: "2013-02-05"
                     number: 151
+                    progressive: true
                 -
                     name: Third Reading
                     date: "2013-05-21"
                     number: 11
+                    progressive: true

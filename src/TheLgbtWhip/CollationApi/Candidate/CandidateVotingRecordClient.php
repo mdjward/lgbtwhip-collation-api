@@ -126,7 +126,8 @@ class CandidateVotingRecordClient extends AbstractClient
         return $this->processor->processRawCandidateData(
             $response->getBody(true),
             $mp,
-            $dateOfVote
+            $dateOfVote,
+            (isset($vote["progressive"]) ? $vote["progressive"] : true)
         );
     }
     

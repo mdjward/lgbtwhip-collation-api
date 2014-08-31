@@ -49,8 +49,12 @@ class CandidateVotingRecordProcessor implements ProcessorInterface
         return $this->thePublicWhipParser->parse($rawData);
     }
     
-    public function processRawCandidateData($rawData, MemberOfParliament $mp, DateTime $dateOfVote)
-    {
+    public function processRawCandidateData(
+        $rawData,
+        MemberOfParliament $mp,
+        DateTime $dateOfVote,
+        $progressive = true
+    ) {
         /* @var $termStartDate DateTime */
         $termStartDate = DateTime::createFromFormat("Y-m-d", $mp["enteredHouse"]);
         $termStartDate->setTime(0, 0, 0);
@@ -61,7 +65,13 @@ class CandidateVotingRecordProcessor implements ProcessorInterface
         $data = $this->processRawData($rawData);
             
         if (isset($data[$name])) {
-            return $data[$name]["vote"];
+            $actualVote = $data[$name]["vote"];
+            
+            return (
+                $progressive === false
+                ? (0 - $actualVote)
+                : $actualVote
+            );
         }
         
         return null;
