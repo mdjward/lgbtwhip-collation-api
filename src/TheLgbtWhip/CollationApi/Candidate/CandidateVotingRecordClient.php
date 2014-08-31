@@ -79,7 +79,7 @@ class CandidateVotingRecordClient extends AbstractClient
                 $issue
             );
             
-            if (!empty($votesForIssue)) {
+            if ($votesForIssue !== null) {
                 $issues[$issue["name"]] = $votesForIssue;
             }
         }
@@ -94,17 +94,15 @@ class CandidateVotingRecordClient extends AbstractClient
         MemberOfParliament $mp,
         array $issue
     ) {
-        $votes = [];
-        
         foreach ($issue["votes"] as $vote) {
             try {
-                $votes[$vote["name"]] = ($this->processVoteForCandidate($url, $mp, $vote) ?: 0);
+                return ($this->processVoteForCandidate($url, $mp, $vote) ?: 0);
             } catch (NotInOfficeException $ex) {
                 // If candidate wasn't in office, they weren't in office
             }
         }
         
-        return $votes;
+        return null;
     }
     
     protected function processVoteForCandidate(

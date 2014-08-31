@@ -31,11 +31,6 @@ voting_records:
             name: Introduction of Civil Partnerships
             votes:
                 -
-                    name: Second Reading
-                    date: "2004-10-12"
-                    number: 256
-                    progressive: true
-                -
                     name: Third Reading
                     date: "2004-11-09"
                     number: 315
@@ -59,11 +54,6 @@ voting_records:
         -
             name: Marriage (Same Sex Couples)
             votes:
-                -
-                    name: Second Reading
-                    date: "2013-02-05"
-                    number: 151
-                    progressive: true
                 -
                     name: Third Reading
                     date: "2013-05-21"
