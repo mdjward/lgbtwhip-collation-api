@@ -37,24 +37,29 @@ $app->get(
         }
     
         $app->response->setStatus(404);
-        return print "{'message': 'Could not find constituency for that postcode'}";
+        return print json_encode([
+            'message' => "Could not find constituency for that postcode"
+        ]);
     }
 );
 
 // MP route
 $app->get(
     "/mp",
-    function() use ($app, $mpClient) {
+    function() use ($app, $votingClient) {
         $name = $app->request->get("name");
         $constituency = $app->request->get("constituency");
         
         if ($name === null || $constituency === null) {
             $app->response->setStatus(401);
-            return print "{'message': 'Both candidate name 'name' and constituency 'constituency' must be provided as GET parameters'}";
+            
+            return print json_encode([
+                'message' => "Both candidate name constituency must be provided as query string parameters 'name' and 'constituency' respectively"
+            ]);
         }
         
         try {
-            if (($mp = $mpClient->getMemberOfParliament($name, $constituency))) {
+            if (($mp = $votingClient->getCandidateWithVotingRecord($name, $constituency))) {
                 return print json_encode($mp);
             }
         } catch (Exception $ex) {
@@ -62,10 +67,11 @@ $app->get(
         }
         
         $app->response->setStatus(404);
-        return print "{'message': 'Could not match MP with that name and constituency'}";
+        return print json_encode([
+            'message' => "Could not match MP with that name and constituency"
+        ]);
     }
 );
-
 
 $app->get(
     "/server-dump",
@@ -75,4 +81,3 @@ $app->get(
 );
 
 $app->run();
-

@@ -16,8 +16,11 @@ use ICanBoogie\Inflector;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\SerializerBuilder;
+use TheLgbtWhip\CollationApi\Candidate\CandidateVotingRecordClient;
+use TheLgbtWhip\CollationApi\Candidate\CandidateVotingRecordProcessor;
 use TheLgbtWhip\CollationApi\Candidate\MemberOfParliamentClient;
 use TheLgbtWhip\CollationApi\Candidate\MemberOfParliamentResponseProcessor;
+use TheLgbtWhip\CollationApi\Candidate\Parser\ThePublicWhipParser;
 use TheLgbtWhip\CollationApi\Constituency\ConstituencyFactory;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeResponseProcessor;
 use TheLgbtWhip\CollationApi\Postcode\PostcodeToConstituencyClient;
@@ -66,4 +69,18 @@ $mpClient = new MemberOfParliamentClient(
     $mpProcessor,
     $configuration["candidate"]["client"]["base_url"],
     $configuration["candidate"]["client"]["apikey"]
+);
+
+
+
+$thePublicWhipParser = new ThePublicWhipParser();
+
+$votingProcessor = new CandidateVotingRecordProcessor($thePublicWhipParser);
+
+$votingClient = new CandidateVotingRecordClient(
+    $client,
+    $votingProcessor,
+    $mpClient,
+    $configuration["voting_records"]["client"]["base_url"],
+    $configuration["voting_records"]["relevant_issues"]
 );

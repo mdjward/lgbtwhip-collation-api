@@ -6,13 +6,24 @@ postcode:
 candidate:
     processor:
     client:
-        apikey: Ewa4N5F3kg63DW9yNYAcGV36
+        apikey: API-KEY-GOES-HERE
         base_url: http://www.theyworkforyou.com/api/getMP?output=js
 voting_records:
     client:
-        base_url: www.publicwhip.org.uk/division.php
+        base_url: http://www.publicwhip.org.uk/division.php
     relevant_issues:
+        -
+            name: Reduce age of consent for homosexual acts to 16
+            votes:
+                -
+                    name: Second Reading
+                    date: "1998-06-22"
+                    number: 311
         -
             name: Marriage (Same Sex Couples)
             votes:
-                - { date: 2013-02-05, number: 151}
+                -
+                    name: Third Reading
+                    date: "2013-02-05"
+                    number: 151
+

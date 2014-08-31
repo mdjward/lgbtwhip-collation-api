@@ -72,7 +72,9 @@ class MemberOfParliamentResponseProcessor implements ProcessorInterface
             $processedName = $processedData[self::KEY_FIRST_NAME] . " " . $processedData[self::KEY_LAST_NAME];
             
             if ($processedName === $name) {
-                return $processedData;
+                $processedData["name"] = $name;
+                
+                return new MemberOfParliament($processedData);
             }
         }
         
