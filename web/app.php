@@ -33,7 +33,7 @@ $app->get(
                 return print $serializer->serialize($constituency, "json");
             }
         } catch (Exception $ex) {
-            throw $ex;
+            // Proceed to the below
         }
     
         $app->response->setStatus(404);
@@ -63,7 +63,7 @@ $app->get(
                 return print json_encode($mp);
             }
         } catch (Exception $ex) {
-            throw $ex;
+            // Proceed to the below
         }
         
         $app->response->setStatus(404);
