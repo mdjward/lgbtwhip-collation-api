@@ -34,10 +34,24 @@ class MemberOfParliamentResponseProcessor implements ProcessorInterface
     const KEY_LAST_NAME = "lastName";
     
     /**
+     * 
+     */
+    const KEY_ENTERED_HOUSE = "entered_house";
+    
+    /**
+     * 
+     */
+    const KEY_LEFT_HOUSE = "left_house";
+    
+    
+    
+    /**
      *
      * @var Inflector
      */
     protected $inflector;
+    
+    
     
     /**
      * 
@@ -64,7 +78,7 @@ class MemberOfParliamentResponseProcessor implements ProcessorInterface
         return $convertedArray;
     }
     
-    public function processRawDataWithFilter($rawData, $name)
+    public function processRawDataWithFilter(array $rawData, $name)
     {
         $processedData = $this->processRawData($rawData);
         
@@ -79,6 +93,30 @@ class MemberOfParliamentResponseProcessor implements ProcessorInterface
         }
         
         return null;
+    }
+    
+    public function processMpTermsInParliament(MemberOfParliament $mp, array $rawData)
+    {
+        $sessions = [];
+        
+        foreach ($rawData as $session) {
+            if (
+                isset($session[self::KEY_ENTERED_HOUSE])
+                && isset($session[self::KEY_LEFT_HOUSE])
+            ) {
+                array_unshift(
+                    $sessions,
+                    [
+                        "start" => $session[self::KEY_ENTERED_HOUSE],
+                        "end" => $session[self::KEY_LEFT_HOUSE]
+                    ]
+                );
+            }
+        }
+        
+        $mp["terms"] = $sessions;
+        
+        return $mp;
     }
 
 }

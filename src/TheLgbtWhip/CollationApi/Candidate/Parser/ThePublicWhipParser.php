@@ -58,7 +58,7 @@ class ThePublicWhipParser
                 }
             }
             
-            $name = trim($nameElements->item(0)->nodeValue);
+            $name = $this->convertNameString($nameElements);
 
             $votes[$name] = [
                 "name" => $name,
@@ -68,6 +68,15 @@ class ThePublicWhipParser
         }
         
         return $votes;
+    }
+    
+    protected function convertNameString(DOMNodeList $nameElements)
+    {
+        return preg_replace(
+            '#^(?:(?:Mr)|(?:Mrs)|(?:Ms)|(?:Miss)|(?:Sir))\.?\s(.+)$#i',
+            '\1',
+            trim($nameElements->item(0)->nodeValue)
+        );
     }
     
     protected function convertVoteString(DOMNodeList $voteElements)

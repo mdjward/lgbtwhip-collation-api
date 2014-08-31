@@ -27,7 +27,7 @@ class MemberOfParliamentClient extends AbstractApiKeyClient
     
     public function __construct(
         Client $client,
-        ProcessorInterface $processor,
+        MemberOfParliamentResponseProcessor $processor,
         $baseUrl,
         $apiKey
     ) {
@@ -46,9 +46,32 @@ class MemberOfParliamentClient extends AbstractApiKeyClient
         $request = $this->client->get((string) $url);
         $response = $request->send();
         
-        return $this->processor->processRawDataWithFilter(
+        $mp = $this->processor->processRawDataWithFilter(
             $response->json(),
             $name
+        );
+        
+        if ($mp === null) {
+            return null;
+        }
+        
+        return $this->getDatesInParliament($mp);
+    }
+    
+    protected function getDatesInParliament(MemberOfParliament $mp)
+    {
+        $url = Url::factory($this->baseUrl);
+        
+        $query = $url->getQuery();
+        $query->add("key", $this->apiKey);
+        $query->add("id", $mp["personId"]);
+        
+        $request = $this->client->get((string) $url);
+        $response = $request->send();
+        
+        return $this->processor->processMpTermsInParliament(
+            $mp,
+            $response->json()
         );
     }
     

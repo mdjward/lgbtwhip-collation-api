@@ -6,7 +6,6 @@ postcode:
 candidate:
     processor:
     client:
-        apikey: API-KEY-GOES-HERE
         base_url: http://www.theyworkforyou.com/api/getMP?output=js
 voting_records:
     client:
@@ -20,10 +19,45 @@ voting_records:
                     date: "1998-06-22"
                     number: 311
         -
-            name: Marriage (Same Sex Couples)
+            name: Repeal of section 28
             votes:
                 -
                     name: Third Reading
+                    date: "2003-03-10"
+                    number: 111
+        -
+            name: Introduction of Civil Partnerships
+            votes:
+                -
+                    name: Second Reading
+                    date: "2004-10-12"
+                    number: 256
+                -
+                    name: Third Reading
+                    date: "2004-11-09"
+                    number: 315
+        -
+            name: Equality Act (Sexual Orientation) Regulations
+            votes:
+                -
+                    name: Vote
+                    date: "2007-03-19"
+                    number: 79
+        -
+            name: IVF treatment for lesbian couples
+            votes:
+                -
+                    name: Vote
+                    date: "2007-03-19"
+                    number: 79
+        -
+            name: Marriage (Same Sex Couples)
+            votes:
+                -
+                    name: Second Reading
                     date: "2013-02-05"
                     number: 151
-
+                -
+                    name: Third Reading
+                    date: "2013-05-21"
+                    number: 11

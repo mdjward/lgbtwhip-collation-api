@@ -55,18 +55,37 @@ class CandidateVotingRecordProcessor implements ProcessorInterface
         $termStartDate = DateTime::createFromFormat("Y-m-d", $mp["enteredHouse"]);
         $termStartDate->setTime(0, 0, 0);
         
-        if ($termStartDate > $dateOfVote) {
-            throw new NotInOfficeException($mp, $dateOfVote);
-        }
+        $this->checkVoteDateAgainstMpTerms($mp, $dateOfVote);
 
         $name = $mp["name"];
         $data = $this->processRawData($rawData);
             
         if (isset($data[$name])) {
-            return $data[$name];
+            return $data[$name]["vote"];
         }
         
         return null;
+    }
+    
+    protected function checkVoteDateAgainstMpTerms(MemberOfParliament $mp, DateTime $dateOfVote)
+    {
+        foreach ($mp["terms"] as $session) {
+            $termStartDate = DateTime::createFromFormat("Y-m-d", $session["start"]);
+            $termStartDate->setTime(0, 0, 0);
+            
+            $termEndDate = (
+                ($end = $session["end"]) === '9999-12-31'
+                ? new DateTime()
+                : DateTime::createFromFormat("Y-m-d", $session["end"])
+            );
+            $termEndDate->setTime(0, 0, 0);
+            
+            if ($dateOfVote >= $termStartDate && $dateOfVote <= $termEndDate) {
+                return true;
+            }
+        }
+        
+        throw new NotInOfficeException($mp, $dateOfVote);
     }
     
 }
